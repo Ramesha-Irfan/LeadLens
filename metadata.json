@@ -1,0 +1,7 @@
+{
+  "name": "LeadLens - AI-Powered Global B2B Lead Intelligence",
+  "description": "Find verified companies and decision-makers globally, enrich missing data, personalize outreach with AI, and launch targeted campaigns from one intelligent workspace.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
