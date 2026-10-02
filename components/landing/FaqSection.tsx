@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const FAQS = [
   {
@@ -39,70 +39,87 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="section-faq" className="w-full py-20 md:py-28 bg-white border-b border-[#E5EAE5] relative transition-colors">
-      {/* Subtle dot lattice accent */}
+    <section id="section-faq" className="w-full py-20 md:py-32 bg-[#EFF6F0] border-b border-[#D5E3D8] relative transition-colors overflow-hidden">
+      {/* Subtle dot lattice accent & ambient glow */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 right-0 w-[420px] h-[300px] bg-dots-fine fade-mask-radial opacity-50" />
+        <div className="absolute bottom-0 right-0 w-[460px] h-[340px] bg-dots-fine fade-mask-radial opacity-40" />
+        <div className="animate-float-slow absolute top-1/2 left-0 w-80 h-80 bg-[#B8D5C0]/35 rounded-full blur-3xl" />
       </div>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-12 md:mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.15] font-bold tracking-[-0.02em] text-[#10251D] mb-4 [text-wrap:balance]">
-              Got Questions? <span className="text-gradient-brand">We've Got Answers.</span>
-            </h2>
-            <p className="text-[#52635A] text-base sm:text-lg leading-relaxed">
-              Everything you need to know about the product, data, and billing.
-            </p>
-          </motion.div>
 
-          <div className="space-y-3">
-            {FAQS.map((faq, index) => {
-              const isOpen = openIndex === index;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.45, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: isOpen ? 0 : -3, transition: { duration: 0.25, ease: 'easeOut' } }}
-                  className={`rounded-2xl border transition-all duration-300 ${isOpen
-                      ? 'bg-white border-[#B8D5C0] shadow-lift ring-1 ring-[#145C43]/10'
-                      : 'bg-[#F8FAF6] border-[#E5EAE5] hover:border-[#145C43]/30 hover:bg-white hover:shadow-soft'
-                    }`}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-14 md:mb-18"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-[3rem] lg:leading-[1.12] font-bold tracking-[-0.025em] text-[#10251D] mb-4 [text-wrap:balance]">
+            Got Questions? <span className="text-gradient-brand">We've Got Answers.</span>
+          </h2>
+          <p className="text-[#52635A] text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
+            Everything you need to know about the product, data, and billing.
+          </p>
+        </motion.div>
+
+        <div className="space-y-3.5">
+          {FAQS.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ duration: 0.45, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                  isOpen
+                    ? 'bg-white border-[#145C43] shadow-lift ring-2 ring-[#145C43]/20'
+                    : 'bg-white/90 backdrop-blur-sm border-[#D5E3D8] hover:border-[#145C43]/40 hover:bg-white hover:shadow-soft'
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleFaq(index)}
+                  className="w-full text-left px-6 py-5 sm:py-6 flex items-center justify-between gap-4 focus:outline-none cursor-pointer select-none group"
                 >
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 focus:outline-none cursor-pointer active:scale-[0.99] transition-transform duration-150"
+                  <span className={`text-base sm:text-lg font-bold tracking-tight transition-colors duration-200 ${
+                    isOpen ? 'text-[#145C43]' : 'text-[#10251D] group-hover:text-[#145C43]'
+                  }`}>
+                    {faq.question}
+                  </span>
+                  
+                  <span
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
+                      isOpen
+                        ? 'bg-[#145C43] text-white rotate-180 shadow-soft'
+                        : 'bg-[#EFF6F0] text-[#52635A] group-hover:bg-[#145C43] group-hover:text-white'
+                    }`}
                   >
-                    <span className={`text-base font-bold tracking-tight transition-colors duration-200 ${isOpen ? 'text-[#145C43]' : 'text-[#10251D]'}`}>
-                      {faq.question}
-                    </span>
-                    <span
-                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ease-out ${isOpen ? 'bg-[#145C43] text-white rotate-180 shadow-soft' : 'bg-[#EFF6F0] text-[#52635A]'
-                        }`}
+                    <ChevronDown className="w-4 h-4 transition-transform duration-300" />
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="content"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                     >
-                      <ChevronDown className="w-4 h-4 transition-transform duration-300" />
-                    </span>
-                  </button>
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100 pb-6 px-6' : 'max-h-0 opacity-0 px-6'
-                      }`}
-                  >
-                    <p className="text-[#52635A] text-sm leading-relaxed border-t border-[#E5EAE5] pt-4">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+                      <div className="px-6 pb-6 pt-1">
+                        <p className="text-[#52635A] text-sm sm:text-[15px] leading-relaxed border-t border-[#E5EAE5] pt-4">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
