@@ -23,13 +23,13 @@ export default function LandingFooter() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[minmax(0,2fr)_repeat(3,minmax(0,1fr))] lg:gap-10 mb-14">
                     {/* Col 1: Wordmark & statement */}
-                    <div className="space-y-6 lg:pr-8">
+                    <div className="space-y-6 lg:pr-2">
                         <Image
-                            src="/leadlens-logo-cropped.png"
+                            src="/123.png"
                             alt="LeadLens Logo"
-                            width={140}
-                            height={40}
-                            className="object-contain h-10 sm:h-12 w-auto object-left drop-shadow-[0_8px_20px_rgba(0,0,0,0.2)]"
+                            width={180}
+                            height={45}
+                            className="h-4 sm:h-6 w-auto object-contain object-left"
                         />
                         <p className="text-sm text-[#DDEBE0]/85 max-w-sm leading-relaxed">
                             The AI-powered global B2B lead intelligence and outbound sales platform. Find verified decision-makers, enrich missing contact data, and automate personalized pipeline generation.

@@ -54,7 +54,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
         <div className="relative z-10 flex flex-col justify-between h-full p-6 xl:p-8">
           {/* Logo */}
           <Link href="/" className="inline-flex w-fit shrink-0">
-            <Image src="/logo.png" alt="LeadLens" width={200} height={60} className="object-contain h-18 w-auto" priority />
+            <Image src="/leadlens-logo-light.png" alt="LeadLens" width={300} height={90} className="object-contain h-7 w-auto" priority />
           </Link>
 
           {/* Main copy */}
@@ -114,7 +114,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
         {/* Mobile logo bar */}
         <div className="flex lg:hidden items-center justify-between px-5 py-2.5 border-b border-[#E5EAE5] shrink-0">
           <Link href="/">
-            <Image src="/logo.png" alt="LeadLens" width={100} height={30} className="object-contain h-7 w-auto" priority />
+            <Image src="/leadlens_light_1024x1024-removebg-preview.png" alt="LeadLens" width={160} height={50} className="object-contain h-13 w-auto" priority />
           </Link>
           <Link href="/" className="flex items-center gap-1.5 text-xs text-[#52635A] hover:text-[#145C43] transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" />

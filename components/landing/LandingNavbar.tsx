@@ -29,11 +29,11 @@ export default function LandingNavbar() {
                 >
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                         <Image
-                            src="/logo.png"
+                            src="/leadlens_light_1024x1024-removebg-preview.png"
                             alt="LeadLens Logo"
-                            width={140}
-                            height={44}
-                            className="object-contain h-9 lg:h-10 w-auto"
+                            width={1024}
+                            height={1024}
+                            className="object-contain h-12 lg:h-48 w-auto"
                             priority
                         />
                     </motion.div>
